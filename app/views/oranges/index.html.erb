@@ -1,0 +1,8 @@
+<h1>Hello World</h1>
+
+<% @oranges.each do |orange| %>
+  <h1><%= link_to orange.title, orange %></h1>
+<% end %>
+
+<div><%= link_to "Create Orange", new_orange_path %></div>
+<div><%= link_to "See Apples", apples_path %></div>
