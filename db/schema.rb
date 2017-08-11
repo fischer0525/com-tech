@@ -10,19 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810004400) do
+ActiveRecord::Schema.define(version: 20170811132450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "apples", force: :cascade do |t|
-    t.string  "title",    null: false
-    t.integer "quantity", null: false
+    t.string   "title",      null: false
+    t.integer  "quantity",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "baskets", force: :cascade do |t|
+    t.integer "capacity",  null: false
+    t.string  "fill_rate", null: false
   end
 
   create_table "oranges", force: :cascade do |t|
-    t.string  "title",    null: false
-    t.integer "quantity", null: false
+    t.string   "title",      null: false
+    t.integer  "quantity",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "zapples", force: :cascade do |t|
+    t.integer "basket_id", null: false
+    t.string  "variety",   null: false
   end
 
 end

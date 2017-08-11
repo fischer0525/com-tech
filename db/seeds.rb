@@ -9,10 +9,22 @@ if Rails.env.development? || Rails.env.production?
 
   Apple.destroy_all
   Orange.destroy_all
-
+  Basket.destroy_all
+  Zapple.destroy_all
 
   apple1 = Apple.create!(title: "Macintosh", quantity: 20)
-  apple2 = Apple.create!(title: "Gala", quantity: 5)
   orange1 = Orange.create!(title: "Navel", quantity: 20)
-  orange2 = Orange.create!(title: "Blood", quantity: 8)
+  basket1 = Basket.create!(capacity: 2, fill_rate: "0")
+  basket2 = Basket.create!(capacity: 27, fill_rate: "0")
+  basket3 = Basket.create!(capacity: 5, fill_rate: "0")
+  basket4 = Basket.create!(capacity: 18, fill_rate: "0")
+  basket5 = Basket.create!(capacity: 9, fill_rate: "0")
+  zapple1 = Zapple.create!(basket: basket1, variety: "Gala")
+  zapple2 = Zapple.create!(basket: basket2, variety: "Jazz")
+  zapple3 = Zapple.create!(basket: basket3, variety: "Honeycrisp")
+  zapple4 = Zapple.create!(basket: basket3, variety: "Honeycrisp")
+  zapple5 = Zapple.create!(basket: basket3, variety: "Honeycrisp")
+  zapple6 = Zapple.create!(basket: basket3, variety: "Honeycrisp")
+  zapple7 = Zapple.create!(basket: basket3, variety: "Honeycrisp")
+  zapple8 = Zapple.create!(basket: basket4, variety: "Jazz")
 end
