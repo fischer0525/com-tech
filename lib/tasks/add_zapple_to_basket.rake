@@ -1,7 +1,7 @@
 # ex. command $rake add_zapple_to_basket\["Gala",1\]
 
 def find_basket(variety, baskets)
-  # Find baskets with space
+  # Find baskets with available space
   basket_array = baskets.select { |basket| basket.zapples.length < basket.capacity }
   # Find a basket with the same variety
   target_basket = basket_array.find { |basket| basket.zapples.size > 0 && basket.zapples.first.variety == variety }
@@ -15,7 +15,7 @@ end
 def put_zapple_in_basket(variety, basket)
   basket.zapples.create!(variety: variety)
   # Calculate new fill rate
-  percentage = (basket.zapples.size.to_f / basket.capacity.to_f) * 100.round(1)
+  percentage = (basket.zapples.size.to_f / basket.capacity.to_f) * 100
   basket.fill_rate = "#{percentage.round(2)}%"
   basket.save
 end
@@ -23,13 +23,12 @@ end
 
 desc "Adds zapples to an empty or non-full basket containing the same variety"
 task :add_zapple_to_basket, [:variety, :count] => :environment do |t, args|
-  # Get your baskets
+  # Get baskets
   baskets = Basket.all
   # Find a basket for the variety
   basket = find_basket(args[:variety], baskets)
   # If no basket found, you can't fit more zapples
   if basket.nil?
-	#  I don't know how you break out of a method, but basically in this case you need to print the message
      puts "All baskets are full. We couldn't find the place for #{args[:count]} zapples"
   # If basket found, add zapples to it
   else
